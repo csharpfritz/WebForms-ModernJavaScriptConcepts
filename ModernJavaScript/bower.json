@@ -1,0 +1,8 @@
+{
+	"name": "asp.net",
+	"private": true,
+	"dependencies": {
+		"angular": "1.*",
+		"knockout": "3.4.0"
+	}
+}
