@@ -25,6 +25,13 @@
     for these samples.  
   </p>
 
+  <h3>Versions</h3>
+  <dl class="dl-horizontal">
+    <dt>Angular</dt>
+    <dd><a href="https://github.com/angular/bower-angular/tree/v1.5.7" target="_blank">1.5.7</a></dd>
+  </dl>
+
+  <h3>Samples</h3>
   <dl class="dl-horizontal">
     <dt><a href="grid.aspx">Simple GridView</a></dt>
     <dd>A standard ASP.NET GridView control that is configured to fetch data using Angular</dd>

@@ -61,10 +61,12 @@
     (function () {
 
       if (pageMethod) {
+
         PageMethods.GetCustomers(function (result, context) {
           myViewModel.Customers = ko.observableArray(result);
           ko.applyBindings(myViewModel, document.getElementById("myGrid"));
         });
+
       } else {
 
         // jQuery

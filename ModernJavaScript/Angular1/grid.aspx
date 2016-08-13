@@ -6,20 +6,53 @@
 
     <h2>Angular Grid Sample</h2>
 
+    <p>
+      Our markup should be pretty standard to databind our grid.  Our idea is 
+      to add a boolean ClientDataBinding attribute to the markup that activates 
+      some JavaScript to format the grid with our Angular code.
+    </p>
+
+    <dl class="dl-horizontal">
+      <dt>ClientDataBinding</dt>
+      <dd>Bool - default value: false <br /> 
+        When set to true output appropriate JavaScript and HTML formatting.  <br />Current value: <b style="color: black; background-color: yellow;"><%: ClientSideDataBinding %></b>
+      </dd>
+    </dl>
+
+    <code>
+      &lt;asp:GridView runat="server" ID="GridView1" ClientIDMode="Static"<br /> 
+            AutoGenerateColumns="false"<br /> 
+            <b>ClientDataBinding="<%: ClientSideDataBinding.ToString().ToLowerInvariant() %>"</b> &gt;<br />
+    </code>
+
+    <br />
+
+    <asp:LinkButton runat="server" ID="ToggleLink" OnClick="ToggleLink_Click">
+      Get Data using <%: ClientSideDataBinding ? "Server-Side" : "Client-Side" %> data binding
+    </asp:LinkButton>
+
     <%-- 
     
-    PROPOSED CODE 
+    PROPOSED CODE CHANGE
   
     Additional attribute supported:  @ClientDataBinding: bool  
+      Activates Modern JavaScript Rendering and client-side databinding
+
+
     
     --%>
-      <asp:SqlDataSource runat="server" ID="mySqlDataSource"></asp:SqlDataSource>
-
-    <asp:GridView runat="server" ID="myGrid" ClientIDMode="Static" AutoGenerateColumns="false" 
-        ClientDataBinding="true"
-        ClientRepeatAttribute="data-ng-repeat" 
-        ClientRepeatValue="customer in customers">
+    <h3>Sample</h3>
+    <asp:GridView runat="server" ID="myGrid" ClientIDMode="Static" 
+        AutoGenerateColumns="false" 
+        ClientDataBinding="false">
       <EmptyDataTemplate>
+        <%-- 
+          Empty table rendered for rich JavaScript interaction  
+          This HTML should be the way that our code renders when client-side binding
+          is enabled.  This EmptyDataTemplate should not be needed, because the control
+          will know that the content is being rendered client-side and should convert 
+          BoundColumns and other column types to appropriate Angular formatting.
+          --%>
         <table>
           <thead>
             <tr>
@@ -53,6 +86,9 @@
 </asp:Content>
 
 <asp:Content runat="server" ContentPlaceHolderID="endOfPage">
+
+  <% if (ClientSideDataBinding)
+    { %>
   <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
   <script type="text/javascript">
 
@@ -62,7 +98,6 @@
       angular.module("myContent", []);
       angular.module("myContent")
         .controller("myPageMethodController", myPageMethodController, ['$scope'])
-        .controller("myRestfulController", myRestfulController, ['$scope', '$http']);
 
       function myPageMethodController($scope) {
 
@@ -73,22 +108,11 @@
 
       }
 
-      function myRestfulController($scope, $http) {
-
-        $http.get("/api/Customer")
-          .success(function (data) {
-            $scope.customers = data;
-          })
-
-      }
-
     })();
-
-    // Do we put together a framework-specific data source for client side databinding?  "AngularDataSource"
 
   </script>
 
-    <%--<asp:ClientDataSource runat="server" id="myClientData" ApiEndpoint="PageMethods.GetCustomers" Mode="KnockoutService"></asp:ClientDataSource>--%>
-
-
+  <% }  // End ClientSideBinding check 
+        
+    %>
 </asp:Content>

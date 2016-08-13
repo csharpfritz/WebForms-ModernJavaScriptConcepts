@@ -10,9 +10,11 @@ namespace ModernJavaScript
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            var settings = new FriendlyUrlSettings();
-            settings.AutoRedirectMode = RedirectMode.Temporary;
-            routes.EnableFriendlyUrls(settings);
+
+            // Web Forms doesn't support FriendlyUrls + Web Methods 
+            // var settings = new FriendlyUrlSettings();
+            // settings.AutoRedirectMode = RedirectMode.Temporary;
+            //routes.EnableFriendlyUrls(settings);
         }
     }
 }

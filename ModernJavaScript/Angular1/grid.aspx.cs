@@ -11,20 +11,17 @@ namespace ModernJavaScript.Angular1
 {
   public partial class grid : System.Web.UI.Page
   {
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
-      if (myGrid.Attributes["ClientDataBinding"] != "true")
-      {
-        var repo = new CustomerRepository();
-        myGrid.DataSource = repo.Get();
-        myGrid.DataBind();
-      } else
-      {
-        myGrid.DataSource = new Customer[] { };
-        myGrid.DataBind();
-      }
+      ServerSideDataBinding();
 
+    }
+
+    public bool ClientSideDataBinding
+    {
+      get { return myGrid.Attributes["ClientDataBinding"].Equals("true", StringComparison.InvariantCultureIgnoreCase); }
     }
 
     [WebMethod]
@@ -36,15 +33,16 @@ namespace ModernJavaScript.Angular1
 
     }
 
-        // The return type can be changed to IEnumerable, however to support
-        // paging and sorting, the following parameters must be added:
-        //     int maximumRows
-        //     int startRowIndex
-        //     out int totalRowCount
-        //     string sortByExpression
-        public IQueryable myGrid_GetData()
-        {
-            return null;
-        }
+    public void ServerSideDataBinding()
+    {
+      myGrid.DataSource = !ClientSideDataBinding ? GetCustomers() : new Customer[] { };
+      myGrid.DataBind();
     }
+
+    protected void ToggleLink_Click(object sender, EventArgs e)
+    {
+      myGrid.Attributes["ClientDataBinding"] = (!ClientSideDataBinding).ToString();
+    }
+  }
+
 }

@@ -13,13 +13,13 @@ namespace ModernJavaScript.Angular1 {
     public partial class grid {
         
         /// <summary>
-        /// mySqlDataSource control.
+        /// ToggleLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource mySqlDataSource;
+        protected global::System.Web.UI.WebControls.LinkButton ToggleLink;
         
         /// <summary>
         /// myGrid control.
