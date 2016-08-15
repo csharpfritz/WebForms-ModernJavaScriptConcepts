@@ -2,7 +2,7 @@
 
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
 
-  <div data-ng-app="myContent" data-ng-controller="myRestfulController">
+  <div>
 
     <h2>Angular Grid Sample</h2>
 
@@ -11,13 +11,6 @@
       to add a boolean ClientDataBinding attribute to the markup that activates 
       some JavaScript to format the grid with our Angular code.
     </p>
-
-    <dl class="dl-horizontal">
-      <dt>ClientDataBinding</dt>
-      <dd>Bool - default value: false <br /> 
-        When set to true output appropriate JavaScript and HTML formatting.  <br />Current value: <b style="color: black; background-color: yellow;"><%: ClientSideDataBinding %></b>
-      </dd>
-    </dl>
 
     <code>
       &lt;asp:GridView runat="server" ID="GridView1" ClientIDMode="Static"<br /> 
@@ -47,13 +40,13 @@
         ClientDataBinding="false">
       <EmptyDataTemplate>
         <%-- 
-          Empty table rendered for rich JavaScript interaction  
+          Empty table rendered to simulate rich JavaScript interaction  
           This HTML should be the way that our code renders when client-side binding
           is enabled.  This EmptyDataTemplate should not be needed, because the control
-          will know that the content is being rendered client-side and should convert 
+          shall know that the content is being rendered client-side and should convert 
           BoundColumns and other column types to appropriate Angular formatting.
           --%>
-        <table>
+        <table data-ng-app="myContent" data-ng-controller="myPageMethodController">
           <thead>
             <tr>
               <th>ID</th>
@@ -73,10 +66,10 @@
         </table>
       </EmptyDataTemplate>
       <Columns>
-        <asp:BoundField DataField="ID" HeaderText="ID" /> <%-- ClientExpression="{{customer.ID}}" --%>
-        <asp:BoundField DataField="FirstName" HeaderText="First Name" /> <%-- ClientExpression="{{customer.FirstName}}"   --%>
-        <asp:BoundField DataField="LastName" HeaderText="Last Name" /> <%--  ClientExpression="{{customer.LastName}}" --%>
-        <asp:BoundField DataField="FirstOrderDate" HeaderText="First Order Date" DataFormatString="{0:d}" /> <%-- ClientExpression="{{customer.FirstOrderDate | date:'shortDate'}}"  --%>
+        <asp:BoundField DataField="ID" HeaderText="ID" /> 
+        <asp:BoundField DataField="FirstName" HeaderText="First Name" /> 
+        <asp:BoundField DataField="LastName" HeaderText="Last Name" /> 
+        <asp:BoundField DataField="FirstOrderDate" HeaderText="First Order Date" DataFormatString="{0:d}" />
       </Columns>
     </asp:GridView>
 
@@ -87,8 +80,11 @@
 
 <asp:Content runat="server" ContentPlaceHolderID="endOfPage">
 
+  <!-- This code should be generated and included when using ClientDataBinding -->
+
   <% if (ClientSideDataBinding)
-    { %>
+    { 
+      %>
   <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
   <script type="text/javascript">
 

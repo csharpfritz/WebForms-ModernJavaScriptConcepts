@@ -42,6 +42,7 @@ namespace ModernJavaScript.Angular1
     protected void ToggleLink_Click(object sender, EventArgs e)
     {
       myGrid.Attributes["ClientDataBinding"] = (!ClientSideDataBinding).ToString();
+      ServerSideDataBinding();
     }
   }
 

@@ -22,6 +22,7 @@
           <p>This application explores extending and enhancing the standard data-bound controls to deliver simpler HTML
               and even enable data-binding to HTTP endpoints.
             </p>
+          <p>Read more about <br /><a class="btn btn-default btn-primary" runat="server" href="~/Concepts.aspx">Common Concepts &raquo;</a></p>
         </div>
         <div class="col-md-4">
             <h2>Angular 1</h2>
