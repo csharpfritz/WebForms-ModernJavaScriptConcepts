@@ -14,18 +14,15 @@ namespace ModernJavaScript.Knockout
     protected void Page_Load(object sender, EventArgs e)
     {
 
-      if (myGrid.Attributes["ClientDataBinding"] != "true")
-      {
-        var repo = new CustomerRepository();
-        myGrid.DataSource = repo.Get();
-        myGrid.DataBind();
-      } else
-      {
-        myGrid.DataSource = new Customer[] { };
-        myGrid.DataBind();
-      }
+      ServerSideDataBinding();
 
     }
+
+    public bool IsClientSideDataBindingEnabled
+    {
+      get { return myGrid.Attributes["ClientDataBinding"].Equals("true", StringComparison.InvariantCultureIgnoreCase); }
+    }
+
 
     [WebMethod]
     public static IEnumerable<Customer> GetCustomers()
@@ -35,5 +32,19 @@ namespace ModernJavaScript.Knockout
       return repo.Get();
 
     }
+
+    public void ServerSideDataBinding()
+    {
+      myGrid.DataSource = !IsClientSideDataBindingEnabled ? GetCustomers() : new Customer[] { };
+      myGrid.DataBind();
+    }
+
+    protected void ToggleLink_Click(object sender, EventArgs e)
+    {
+      myGrid.Attributes["ClientDataBinding"] = (!IsClientSideDataBindingEnabled).ToString();
+      ServerSideDataBinding();
+    }
+
+
   }
 }

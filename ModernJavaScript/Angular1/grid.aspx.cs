@@ -19,7 +19,7 @@ namespace ModernJavaScript.Angular1
 
     }
 
-    public bool ClientSideDataBinding
+    public bool IsClientSideDataBindingEnabled
     {
       get { return myGrid.Attributes["ClientDataBinding"].Equals("true", StringComparison.InvariantCultureIgnoreCase); }
     }
@@ -35,13 +35,13 @@ namespace ModernJavaScript.Angular1
 
     public void ServerSideDataBinding()
     {
-      myGrid.DataSource = !ClientSideDataBinding ? GetCustomers() : new Customer[] { };
+      myGrid.DataSource = !IsClientSideDataBindingEnabled ? GetCustomers() : new Customer[] { };
       myGrid.DataBind();
     }
 
     protected void ToggleLink_Click(object sender, EventArgs e)
     {
-      myGrid.Attributes["ClientDataBinding"] = (!ClientSideDataBinding).ToString();
+      myGrid.Attributes["ClientDataBinding"] = (!IsClientSideDataBindingEnabled).ToString();
       ServerSideDataBinding();
     }
   }

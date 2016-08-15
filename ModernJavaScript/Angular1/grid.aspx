@@ -7,21 +7,20 @@
     <h2>Angular Grid Sample</h2>
 
     <p>
-      Our markup should be pretty standard to databind our grid.  Our idea is 
-      to add a boolean ClientDataBinding attribute to the markup that activates 
-      some JavaScript to format the grid with our Angular code.
+      Our markup should be pretty standard to databind our grid. This simple grid is configured to load 3 customer
+      records that are hardcoded into our code-behind and accessible through a GetCustomers method that was perfect for server-side model binding, but when a static keyword and a WebMethodAttribute are added, it now delivers data to the client.
     </p>
 
     <code>
       &lt;asp:GridView runat="server" ID="GridView1" ClientIDMode="Static"<br /> 
             AutoGenerateColumns="false"<br /> 
-            <b>ClientDataBinding="<%: ClientSideDataBinding.ToString().ToLowerInvariant() %>"</b> &gt;<br />
+            <b>ClientDataBinding="<%: IsClientSideDataBindingEnabled.ToString().ToLowerInvariant() %>"</b> &gt;<br />
     </code>
 
     <br />
 
     <asp:LinkButton runat="server" ID="ToggleLink" OnClick="ToggleLink_Click">
-      Get Data using <%: ClientSideDataBinding ? "Server-Side" : "Client-Side" %> data binding
+      Get Data using <%: IsClientSideDataBindingEnabled ? "Server-Side" : "Client-Side" %> data binding
     </asp:LinkButton>
 
     <%-- 
@@ -82,8 +81,8 @@
 
   <!-- This code should be generated and included when using ClientDataBinding -->
 
-  <% if (ClientSideDataBinding)
-    { 
+  <% if (IsClientSideDataBindingEnabled)
+    {
       %>
   <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
   <script type="text/javascript">

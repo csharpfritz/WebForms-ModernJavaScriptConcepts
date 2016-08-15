@@ -37,8 +37,8 @@
     <dt><a href="grid.aspx">Simple GridView</a></dt>
     <dd>A standard ASP.NET GridView control that is configured to fetch data using jQuery and bind with Knockout</dd>
 
-    <dt><a href="formdetails.aspx">Simple Form Details</a></dt>
-    <dd>A FormDetails control configured to fetch and save data using jQuery and data-bind using Knockout</dd>
+    <dt>Simple Form Details</dt>
+    <dd>A FormDetails control configured to fetch and save data using jQuery and data-bind using Knockout.  Sample not completed yet</dd>
   </dl>
 
 </asp:Content>

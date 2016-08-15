@@ -13,6 +13,15 @@ namespace ModernJavaScript.Knockout {
     public partial class grid {
         
         /// <summary>
+        /// ToggleLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton ToggleLink;
+        
+        /// <summary>
         /// myGrid control.
         /// </summary>
         /// <remarks>
