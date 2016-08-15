@@ -22,6 +22,9 @@
     </dd>
   </dl>
 
-
+  <h3>A Note about the Samples</h3>
+  <p>
+    These samples have been constructed to be very interactive to show both how a server-side implementation current works and how it could be augmented with the features described above and generate slightly different markup along with some JavaScript to connect the controls to their new client-side datasource.  To accomplish this, we abused the EmptyTemplate capabilities to include the prospective HTML that we would like delivered to the browser and tricked the server-side rendering of these controls to use the EmptyTemplate by rendering a server-side datasource with zero records.
+  </p>
 
 </asp:Content>

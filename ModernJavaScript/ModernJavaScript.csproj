@@ -121,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Angular1\default.aspx" />
+    <Content Include="Angular1\formdetails.aspx" />
     <Content Include="Angular1\grid.aspx" />
     <Content Include="Angular1\logo.jpg" />
     <Content Include="bower_components\angular\angular-csp.css" />
@@ -213,6 +214,7 @@
     <Content Include="bower_components\knockout\README.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Knockout\default.aspx" />
+    <Content Include="Knockout\formdetails.aspx" />
     <Content Include="Knockout\grid.aspx" />
     <Content Include="Knockout\logo.jpg" />
     <Content Include="Scripts\bootstrap.js" />
@@ -272,6 +274,13 @@
     <Compile Include="Angular1\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Angular1\formdetails.aspx.cs">
+      <DependentUpon>formdetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Angular1\formdetails.aspx.designer.cs">
+      <DependentUpon>formdetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Angular1\grid.aspx.cs">
       <DependentUpon>grid.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -306,6 +315,13 @@
     </Compile>
     <Compile Include="Knockout\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Knockout\formdetails.aspx.cs">
+      <DependentUpon>formdetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Knockout\formdetails.aspx.designer.cs">
+      <DependentUpon>formdetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Knockout\grid.aspx.cs">
       <DependentUpon>grid.aspx</DependentUpon>
