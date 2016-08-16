@@ -3,11 +3,14 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h1>Web Forms with Modern JavaScript</h1>
-        <p class="lead">Web Forms is a hardened UI framework that enabled quick development of applications for the web.</p>
-        <p>Its known for its use of a rich control syntax and the mangled HTML that results 
+        <h2>Web Forms with Modern JavaScript</h2>
+        <p>Web Forms is known for its use of a rich control syntax and the mangled HTML that results 
           from those controls.  Unfortunately, this reduces its usability
-          with modern JavaScript UI frameworks.  This application explores some concepts that
+          with modern JavaScript UI frameworks.  However, with these modern frameworks we find that there
+          is a mountain of yak-shaving in the JavaScript and CSS configuration required before even the simplest "Hello-World" page can be built.
+        </p>
+      <p>
+            This application explores some concepts that
           could be implemented to make Web Forms and several JavaScript framework play very nicely together
           and perhaps even make it VERY easy to adapt existing applications to work with those frameworks.
         </p>
