@@ -11,6 +11,20 @@
       records that are hardcoded into our code-behind and accessible through a GetCustomers method that was perfect for server-side model binding, but when a static keyword and a WebMethodAttribute are added, it now delivers data to the client.
     </p>
 
+    <p>As a desired outcome of the translation, any data formatting that was defined in a bound column of a template column should be translated to appropriate JavaScript formatting using the Knockout template langauge.  At its simplest, a BoundColumn with no formatting should be translated like this:</p>
+
+    <h4>Server-Side</h4>
+    <code>
+        &lt;asp:BoundField DataField="FirstName" HeaderText="First Name" /&gt; 
+    </code>
+
+    <h4>Rendered HTML</h4>
+    <code>
+      &lt;th&gt;First Name&lt;/th&gt;
+      ...
+      &lt;td&gt;&lt;!--ko text: FirstName --&gt;&lt;!--/ko--&gt;&lt;/td&gt;
+    </code>
+
     <p>With Knockout, we need to add transportation for the data.  In this scenario, we have configured a WebAPI endpoint that this sample will use to databind against.  We could use a PageMethod with syntax similar to that demonstrated in the <a href="/Angular1/grid.aspx">Angular 1 Grid sample</a></p>
 
     <code>
