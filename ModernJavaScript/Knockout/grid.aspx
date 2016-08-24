@@ -20,10 +20,11 @@
 
     <h4>Rendered HTML</h4>
     <code>
-      &lt;th&gt;First Name&lt;/th&gt;
-      ...
+      &lt;th&gt;First Name&lt;/th&gt;<br />
+      ...</br>
       &lt;td&gt;&lt;!--ko text: FirstName --&gt;&lt;!--/ko--&gt;&lt;/td&gt;
     </code>
+    <br /><br />
 
     <p>With Knockout, we need to add transportation for the data.  In this scenario, we have configured a WebAPI endpoint that this sample will use to databind against.  We could use a PageMethod with syntax similar to that demonstrated in the <a href="/Angular1/grid.aspx">Angular 1 Grid sample</a></p>
 
