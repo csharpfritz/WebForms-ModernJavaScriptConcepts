@@ -4,7 +4,9 @@
 
   <h2>Knockout Form Details Sample</h2>
 
-  <p>To be constructed...</p>
+  <h3>Sample</h3>
 
+  <asp:FormView runat="server" ID="myForm">
+  </asp:FormView>
 
 </asp:Content>
